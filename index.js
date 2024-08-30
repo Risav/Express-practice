@@ -2,6 +2,7 @@ import express from 'express';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
 
+
 const app = express();
 const port = 3000;
 
@@ -16,6 +17,8 @@ app.use(methodOverride(function (req, res) {
 }))
 
 app.use(express.static('public'));
+
+app.set('view engine', "ejs");
 
 app.get('/', (req, res) => {
     res.render('index.ejs');
