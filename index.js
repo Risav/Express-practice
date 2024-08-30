@@ -1,10 +1,14 @@
 import express from 'express';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
+import {fileURLToPath} from 'url';
+import { dirname } from 'path';
 
 
 const app = express();
 const port = 3000;
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride(function (req, res) {
@@ -21,7 +25,7 @@ app.use(express.static('public'));
 app.set('view engine', "ejs");
 
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render(__dirname + "/views/index.ejs");
 })
 
 let items = [
